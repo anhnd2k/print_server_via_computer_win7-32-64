@@ -30,7 +30,8 @@ server.get("/printers", async (req, res) => {
     stdout = stdout.filter(item => item);
     for (let i = 0; i < stdout.length; i++) {
         if (stdout[i] == " \r\r\n" || stdout[i] == "\r\r\n" || stdout[i].includes("\r\r\n") || stdout[i].includes(" \r\r\n")) {
-            if(stdout[i + 1] !== undefined || stdout[i + 1] !== null){
+            if(stdout[i + 1] !== undefined && stdout[i + 1] !== null){
+              console.log("===>>", stdout[i + 1])
               printers[j] = {name: stdout[i + 1]}
             }
             j++;
